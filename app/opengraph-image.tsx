@@ -1,0 +1,41 @@
+import { ImageResponse } from 'next/og'
+
+export const alt = 'Aaron Zerrouk — Étudiant en BUT MMI · Développeur Web'
+export const size = { width: 1200, height: 630 }
+export const contentType = 'image/png'
+
+export default function OpengraphImage() {
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: 80,
+          background: '#1a1714',
+          color: '#f4f1ea',
+          fontFamily: 'sans-serif',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 26, color: '#a39d93' }}>
+          <div style={{ width: 14, height: 14, borderRadius: 999, background: '#e8764a' }} />
+          Disponible — alternance, stage, job étudiant
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ fontSize: 120, fontWeight: 700, letterSpacing: -5, lineHeight: 1 }}>
+            Aaron Zerrouk<span style={{ color: '#e8764a' }}>.</span>
+          </div>
+          <div style={{ fontSize: 40, color: '#c9c3b8' }}>Étudiant en BUT MMI · Développeur Web</div>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 24, color: '#a39d93' }}>
+          <span>IUT Clermont Auvergne</span>
+          <span>github.com/aaronZER69</span>
+        </div>
+      </div>
+    ),
+    size,
+  )
+}
