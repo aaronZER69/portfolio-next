@@ -61,7 +61,7 @@ const fr = {
     missions: 'Missions',
   },
   skills: {
-    heading: "Ce avec quoi je travaille, sans pourcentages inventés.",
+    heading: 'Ce avec quoi je travaille.',
     legend: 'Niveaux',
     levels: { solid: 'Solide', comfortable: "À l'aise", learning: 'En apprentissage' },
     groups: { languages: 'Langages', frameworks: 'Frameworks & librairies', tools: 'Outils & plateformes' },
@@ -173,7 +173,7 @@ const en: Dictionary = {
     missions: 'Responsibilities',
   },
   skills: {
-    heading: 'What I work with — no made-up percentages.',
+    heading: 'What I work with.',
     legend: 'Levels',
     levels: { solid: 'Strong', comfortable: 'Comfortable', learning: 'Learning' },
     groups: { languages: 'Languages', frameworks: 'Frameworks & libraries', tools: 'Tools & platforms' },

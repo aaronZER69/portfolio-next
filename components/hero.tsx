@@ -17,7 +17,7 @@ export function Hero() {
     <section id="top" aria-labelledby="hero-heading" className="relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="bg-dots pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_60%)]"
+        className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_60%)]"
       />
       <div className="relative mx-auto max-w-5xl px-5 pt-16 pb-20 md:px-8 md:pt-28 md:pb-28">
         <p

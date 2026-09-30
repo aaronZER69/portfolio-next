@@ -18,7 +18,7 @@ export function ProjectCard({ project, onOpen }: Props) {
         onClick={() => onOpen(project)}
         aria-haspopup="dialog"
         className={cn(
-          'group flex h-full w-full flex-col overflow-hidden rounded-xl border border-border bg-card text-left transition-colors hover:border-foreground/25 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none',
+          'portfolio-project-card group flex h-full w-full flex-col overflow-hidden rounded-xl border border-border bg-card text-left focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none',
           project.upcoming && 'border-dashed',
         )}
       >

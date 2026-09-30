@@ -91,6 +91,10 @@ export const projects: Project[] = [
     ],
     images: [
       {
+        src: '/projects/plexiglass-cover.png',
+        alt: { fr: 'Couverture du configurateur Plexiglass', en: 'Plexiglass configurator cover' },
+      },
+      {
         src: '/projects/plexi-config.png',
         alt: {
           fr: 'Interface du configurateur avec la plaque en aperçu et les options de forme',
@@ -126,6 +130,7 @@ export const projects: Project[] = [
       { name: 'Node.js', detail: { fr: 'Gestion des données et des commandes', en: 'Data and order handling' } },
     ],
     images: [
+      { src: '/projects/huiles-cover.png', alt: { fr: 'Couverture de la boutique d’huiles', en: 'Oil shop cover' } },
       { src: '/projects/oil1.png', alt: { fr: "Page d'accueil de la boutique", en: 'Shop home page' } },
       { src: '/projects/oil2.png', alt: { fr: 'Catalogue produits', en: 'Product catalogue' } },
       { src: '/projects/oil3.png', alt: { fr: 'Détail produit', en: 'Product detail' } },
@@ -164,7 +169,9 @@ export const projects: Project[] = [
       { name: 'Spatie Permission', detail: { fr: 'Rôles et permissions', en: 'Roles and permissions' } },
       { name: 'PHPUnit · GitHub Actions · Docker', detail: { fr: 'Tests, CI/CD et conteneurisation', en: 'Tests, CI/CD and containers' } },
     ],
-    images: [],
+    images: [
+      { src: '/projects/bibliotech-cover.png', alt: { fr: 'Couverture de BiblioTech', en: 'BiblioTech cover' } },
+    ],
     repo: 'https://github.com/aaronZER69/laravel5',
   },
   {
@@ -196,7 +203,9 @@ export const projects: Project[] = [
       { name: 'PlantUML', detail: { fr: 'Modélisation UML', en: 'UML modelling' } },
       { name: 'Docker', detail: { fr: 'Environnement Codespaces', en: 'Codespaces environment' } },
     ],
-    images: [],
+    images: [
+      { src: '/projects/boutikpro-cover.png', alt: { fr: 'Couverture de BoutikPro', en: 'BoutikPro cover' } },
+    ],
     repo: 'https://github.com/BTS2-SIO-SLAM-LSW/bts-sio-2-oral-du-ccf-python-aaronZER69',
   },
   {
@@ -225,6 +234,7 @@ export const projects: Project[] = [
       { name: 'JavaScript', detail: { fr: 'Interactivité et événements', en: 'Interactivity and events' } },
     ],
     images: [
+      { src: '/projects/yoasobi-cover.jpg', alt: { fr: 'Couverture du site YOASOBI', en: 'YOASOBI website cover' } },
       { src: '/projects/yoasobi-1.png', alt: { fr: "Page d'accueil et présentation", en: 'Home page and introduction' } },
       { src: '/projects/yoasobi-2.gif', alt: { fr: 'Animations et interactions', en: 'Animations and interactions' }, animated: true },
       { src: '/projects/yoasobi-3.png', alt: { fr: 'Section membres du groupe', en: 'Band members section' } },
@@ -256,6 +266,7 @@ export const projects: Project[] = [
       { name: 'MySQL', detail: { fr: 'Persistance des données', en: 'Data persistence' } },
     ],
     images: [
+      { src: '/projects/glpi-cover.jpg', alt: { fr: 'Couverture de la gestion de parc GLPI', en: 'GLPI asset management cover' } },
       { src: '/projects/glpi-dashboard.png', alt: { fr: 'Tableau de bord GLPI', en: 'GLPI dashboard' } },
     ],
   },
@@ -410,10 +421,10 @@ export const education = [
 ]
 
 export const languages = [
-  { name: { fr: 'Français', en: 'French' }, level: { fr: 'Langue maternelle', en: 'Native' } },
-  { name: { fr: 'Anglais', en: 'English' }, level: { fr: 'C1 — courant', en: 'C1 — fluent' } },
-  { name: { fr: 'Espagnol', en: 'Spanish' }, level: { fr: 'A2 — bases', en: 'A2 — basic' } },
-  { name: { fr: 'Japonais', en: 'Japanese' }, level: { fr: 'Autodidacte — kana', en: 'Self-taught — kana' } },
+  { flag: 'fr', name: { fr: 'Français', en: 'French' }, level: { fr: 'Langue maternelle', en: 'Native' } },
+  { flag: 'gb', name: { fr: 'Anglais', en: 'English' }, level: { fr: 'C1 — courant', en: 'C1 — fluent' } },
+  { flag: 'es', name: { fr: 'Espagnol', en: 'Spanish' }, level: { fr: 'A2 — bases', en: 'A2 — basic' } },
+  { flag: 'jp', name: { fr: 'Japonais', en: 'Japanese' }, level: { fr: 'Autodidacte — kana', en: 'Self-taught — kana' } },
 ]
 
 export const documents = [

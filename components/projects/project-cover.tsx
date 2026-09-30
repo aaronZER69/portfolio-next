@@ -18,7 +18,7 @@ export function ProjectCover({ project, image, sizes, priority, className }: Pro
 
   if (image) {
     return (
-      <div className={cn('relative overflow-hidden bg-muted', className)}>
+      <div className={cn('portfolio-project-cover relative overflow-hidden bg-muted', className)}>
         <Image
           src={image.src}
           alt={t(image.alt)}
@@ -26,7 +26,7 @@ export function ProjectCover({ project, image, sizes, priority, className }: Pro
           sizes={sizes}
           priority={priority}
           unoptimized={image.animated}
-          className="object-cover object-top"
+          className="object-cover object-center"
         />
       </div>
     )
@@ -36,7 +36,7 @@ export function ProjectCover({ project, image, sizes, priority, className }: Pro
     <div
       role="img"
       aria-label={`${project.title} — ${ui.projects.placeholder}`}
-      className={cn('bg-dots relative flex flex-col justify-between overflow-hidden bg-muted p-5', className)}
+      className={cn('relative flex flex-col justify-between overflow-hidden bg-muted p-5', className)}
     >
       <span className="font-mono text-[0.65rem] tracking-wide text-muted-foreground uppercase">
         {ui.projects.placeholder}

@@ -31,7 +31,10 @@ export function Education() {
           <dl className="mt-4 divide-y divide-border rounded-xl border border-border bg-card">
             {languages.map((lang) => (
               <div key={lang.name.fr} className="flex items-baseline justify-between gap-4 px-4 py-3">
-                <dt className="font-medium">{t(lang.name)}</dt>
+                <dt className="flex items-center gap-3 font-medium">
+                  <span aria-hidden="true" className={`flag-icon flag-icon-${lang.flag}`} />
+                  {t(lang.name)}
+                </dt>
                 <dd className="text-right text-sm text-muted-foreground">{t(lang.level)}</dd>
               </div>
             ))}

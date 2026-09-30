@@ -1,0 +1,74 @@
+/* Mobile menu toggle — click animation adapted from Mikael Ainalem's
+   "Flippin' burgers" (first menu): the two curled lines unroll into a cross.
+   Paste this block into app/globals.css (anywhere at the top level is fine). */
+.burger-flip {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  color: var(--foreground);
+}
+.burger-flip-lines,
+.burger-flip-x {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.burger-flip-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50%;
+  transition:
+    stroke-dasharray 500ms 200ms,
+    stroke-dashoffset 500ms 200ms,
+    transform 500ms 200ms;
+}
+.burger-flip-x {
+  color: var(--brand);
+  transform: scale(0);
+  transition: transform 400ms;
+}
+.burger-flip-x .burger-flip-line {
+  stroke-width: 5.5px;
+}
+.burger-flip-line2 {
+  stroke-dasharray: 40 200;
+  stroke-dashoffset: 0px;
+}
+.burger-flip-line3 {
+  stroke-dasharray: 40 179;
+  stroke-dashoffset: 0px;
+}
+.burger-flip.is-open .burger-flip-line {
+  transition:
+    stroke-dasharray 500ms,
+    stroke-dashoffset 500ms,
+    transform 500ms;
+}
+.burger-flip.is-open .burger-flip-line1 {
+  transform: scale(0, 1);
+  transition: transform 500ms 100ms;
+}
+.burger-flip.is-open .burger-flip-line2 {
+  stroke-dasharray: 5px 200;
+  stroke-dashoffset: -164px;
+}
+.burger-flip.is-open .burger-flip-line3 {
+  stroke-dasharray: 5px 179;
+  stroke-dashoffset: -142px;
+}
+.burger-flip.is-open .burger-flip-x {
+  transform: scale(1);
+  transition: transform 400ms 350ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .burger-flip-line,
+  .burger-flip-x {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
+}

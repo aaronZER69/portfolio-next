@@ -1,40 +1,16 @@
 'use client'
 
-import { MenuIcon, XIcon } from 'lucide-react'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { LocaleToggle, ThemeToggle } from '@/components/header-controls'
-import { Monogram } from '@/components/icons'
+import { LocaleToggle } from '@/components/header-controls'
+import { HamburgerIcon } from '@/components/hamburger-icon'
 import { Button } from '@/components/ui/button'
 import { useLocale } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
 
 const sectionIds = ['about', 'projects', 'experience', 'skills', 'education', 'contact'] as const
 
-function useActiveSection() {
-  const [active, setActive] = useState<string | null>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        }
-      },
-      { rootMargin: '-45% 0px -50% 0px' },
-    )
-    for (const id of sectionIds) {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    }
-    return () => observer.disconnect()
-  }, [])
-
-  return active
-}
-
 export function SiteHeader() {
   const { ui } = useLocale()
-  const active = useActiveSection()
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -48,48 +24,34 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md supports-backdrop-filter:bg-background/65">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 px-5 md:px-8">
+      <div className="mx-auto flex h-20 max-w-5xl items-center justify-between gap-4 px-5 md:px-8">
         <a
           href="#top"
           aria-label={ui.nav.home}
           className="flex items-center gap-2.5 rounded-md focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
-          <Monogram />
-          <span className="hidden text-sm font-medium tracking-tight sm:inline">Aaron Zerrouk</span>
+          <Image
+            src="/az-logo.png"
+            alt="Aaron Zerrouk"
+            width={72}
+            height={48}
+            priority
+            className="site-logo h-14 w-[5.5rem] object-contain"
+          />
         </a>
-
-        <nav aria-label={ui.nav.primary} className="hidden md:block">
-          <ul className="flex items-center gap-1">
-            {links.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={`#${link.id}`}
-                  aria-current={active === link.id ? 'true' : undefined}
-                  className={cn(
-                    'rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none',
-                    active === link.id && 'text-foreground',
-                  )}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         <div className="flex items-center gap-1">
           <LocaleToggle />
-          <ThemeToggle />
           <Button
             variant="ghost"
-            size="icon"
-            className="md:hidden"
+            size="icon-lg"
+            className="ml-2 size-12"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? ui.nav.close : ui.nav.menu}
             onClick={() => setOpen((o) => !o)}
           >
-            {open ? <XIcon /> : <MenuIcon />}
+            <HamburgerIcon open={open} />
           </Button>
         </div>
       </div>
@@ -97,16 +59,18 @@ export function SiteHeader() {
       <nav
         id="mobile-nav"
         aria-label={ui.nav.primary}
-        hidden={!open}
-        className="border-t border-border/60 md:hidden"
+        aria-hidden={!open}
+        inert={!open}
+        data-open={open}
+        className="menu-panel border-t border-border/60"
       >
-        <ul className="mx-auto flex max-w-5xl flex-col px-5 py-3">
+        <ul className="mx-auto flex max-w-5xl flex-col px-5 py-5 md:px-8">
           {links.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between rounded-md py-3 text-base text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                className="flex items-center justify-between rounded-md py-4 text-lg text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
               >
                 {link.label}
                 <span aria-hidden="true" className="font-mono text-xs text-muted-foreground">

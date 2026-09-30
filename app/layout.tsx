@@ -1,12 +1,9 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import { Providers } from '@/components/providers'
+import { PortfolioEffects } from '@/components/portfolio-effects'
 import { siteUrl } from '@/lib/site'
 import './globals.css'
-
-const geist = Geist({ subsets: ['latin'], variable: '--font-geist', display: 'swap' })
-const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap' })
 
 const title = 'Aaron Zerrouk — Développeur Web · Étudiant BUT MMI'
 const description =
@@ -50,17 +47,15 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#faf8f4' },
-    { media: '(prefers-color-scheme: dark)', color: '#1a1714' },
-  ],
+  colorScheme: 'dark',
+  themeColor: '#0a0e27',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang="fr" suppressHydrationWarning>
       <body className="font-sans antialiased">
+        <PortfolioEffects />
         <Providers>{children}</Providers>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

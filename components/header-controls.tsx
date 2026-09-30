@@ -1,42 +1,25 @@
 'use client'
 
-import { MoonIcon, SunIcon } from 'lucide-react'
-import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
 import { useLocale } from '@/lib/i18n'
 
-export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme()
-  const { ui } = useLocale()
-
-  return (
-    <Button
-      variant="ghost"
-      size="icon"
-      aria-label={ui.theme.toggle}
-      title={ui.theme.toggle}
-      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-    >
-      <SunIcon className="hidden dark:block" />
-      <MoonIcon className="dark:hidden" />
-    </Button>
-  )
-}
-
 export function LocaleToggle() {
   const { locale, setLocale, ui } = useLocale()
+  const nextLocale = locale === 'fr' ? 'en' : 'fr'
+  const nextFlagClass = nextLocale === 'fr' ? 'flag-icon-fr' : 'flag-icon-gb'
 
   return (
     <Button
       variant="ghost"
-      size="sm"
-      className="font-mono text-xs"
+      size="default"
+      className="h-10 gap-2 px-3 text-sm"
       aria-label={ui.lang.toggle}
       title={ui.lang.toggle}
-      lang={locale === 'fr' ? 'en' : 'fr'}
-      onClick={() => setLocale(locale === 'fr' ? 'en' : 'fr')}
+      lang={nextLocale}
+      onClick={() => setLocale(nextLocale)}
     >
-      {ui.lang.short}
+      <span aria-hidden="true" className={`flag-icon ${nextFlagClass}`} />
+      <span>{ui.lang.short}</span>
     </Button>
   )
 }
