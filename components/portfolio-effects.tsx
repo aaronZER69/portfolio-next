@@ -10,8 +10,6 @@ export function PortfolioEffects() {
     const follower = document.querySelector<HTMLElement>('.cursor-follower')
     const orbital = document.querySelector<HTMLElement>('.cursor-orbital')
     if (!dot || !follower || !orbital) return
-    const shapes = Array.from(document.querySelectorAll<HTMLElement>('.portfolio-shape'))
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     let mouseX = 0
     let mouseY = 0
@@ -20,8 +18,6 @@ export function PortfolioEffects() {
     let orbitalAngle = 0
     let frame = 0
     let trailCounter = 0
-    let shapeX = 0
-    let shapeY = 0
 
     const handleMove = (event: MouseEvent) => {
       mouseX = event.clientX
@@ -51,19 +47,6 @@ export function PortfolioEffects() {
       orbital.style.left = `${mouseX + Math.cos(orbitalAngle) * 15 - 4}px`
       orbital.style.top = `${mouseY + Math.sin(orbitalAngle) * 15 - 4}px`
 
-      if (!reducedMotion && shapes.length > 0) {
-        const targetX = (mouseX / window.innerWidth - 0.5) * 18
-        const targetY = (mouseY / window.innerHeight - 0.5) * 14
-        shapeX += (targetX - shapeX) * 0.04
-        shapeY += (targetY - shapeY) * 0.04
-        shapes.forEach((shape, index) => {
-          const factor = (index + 1) * 0.65
-          shape.style.setProperty('--shape-x', `${shapeX * factor}px`)
-          shape.style.setProperty('--shape-y', `${shapeY * factor}px`)
-          shape.style.setProperty('--shape-rx', `${shapeY * factor * 0.35}deg`)
-          shape.style.setProperty('--shape-ry', `${shapeX * factor * -0.35}deg`)
-        })
-      }
       frame = requestAnimationFrame(animate)
     }
 
@@ -87,12 +70,6 @@ export function PortfolioEffects() {
   return (
     <>
       <div className="portfolio-background" aria-hidden="true">
-        <span className="portfolio-blob portfolio-blob-one" />
-        <span className="portfolio-blob portfolio-blob-two" />
-        <span className="portfolio-blob portfolio-blob-three" />
-        <span className="portfolio-shape portfolio-shape-one" />
-        <span className="portfolio-shape portfolio-shape-two" />
-        <span className="portfolio-shape portfolio-shape-three" />
       </div>
       <div className="cursor-dot" aria-hidden="true" />
       <div className="cursor-follower" aria-hidden="true" />
